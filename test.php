@@ -11,10 +11,14 @@
 
 <?php
 
-	if ($_SERVER["REQUEST_METHOD"] == "GET"){
+	if (((isset($_GET['fname']))))
+	{
+		
+		
 		$name = $_GET["fname"];
 		$p="";
-		
+		if($name !== '')
+		{
 		// this function checks if the expression of type 09*09. this should be shown as invalid expression
 		// for this the function finds all operands and checks the first character of the operands to determine
 		//if they are of type 09 or 04 etc
@@ -96,8 +100,14 @@ $result = @eval($name . "; return true;");
 // following function checks if the above eval generated any error
 if (error_get_last()){
 		echo "<br>$name"." = ";
-
+	
+	if (strpos($name, '/0') !== false)
+	{
+		echo 'Divide by zero error';
+	}
+		else{
     echo 'Invalid Expression. Please enter a valid expression';
+		}
    // print_r(error_get_last());
 }
 else
@@ -131,6 +141,7 @@ else
 
 			
 		
+	}
 	}
 
 ?>
