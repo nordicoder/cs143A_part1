@@ -77,9 +77,14 @@ foreach($expression_array as $item)
 	}
 }
 }
-	
 
+//handle the "4--4 case"
+//basically replace -- with - - 	
 
+if (strpos($name, '--') !== false)
+{
+			$name = str_replace('--', '- -', $name);
+}
 	
 	
 //@ added to supress output stream
@@ -110,10 +115,17 @@ else
 	{}
 	else
 	{
+		if (strpos($name, '--') !== false)
+		{
+			echo "here --";
+			$name = str_replace('--', '- -', $name);
+		}
+		
 	$p = eval('return '.$name.';');
-	}
-	echo "<br>$name"." = ";
+		echo "<br>$name"." = ";
 	print $p;
+	}
+
 	}
 }
 
