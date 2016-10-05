@@ -58,13 +58,17 @@
 					}
 				}
 			$expression_array=explode("-",$name);
+			
 			foreach($expression_array as $item) {
+				if(strlen($item)>0)
+				{
 				if((strcmp($item[0],"0")==0) && strlen($item)>1) {
 					echo "<br>$name"." = ";
 		    			echo 'Invalid Expression. Please enter a valid expression-';
 					return 1;
 					}
 				}
+			}
 	
 			$expression_array=explode("/",$name);
 			foreach($expression_array as $item) {
